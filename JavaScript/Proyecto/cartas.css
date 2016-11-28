@@ -1,0 +1,46 @@
+body{
+	background-image: url("img/fondo2.jpg");
+
+ }
+
+h2{
+	text-align: center;
+	font-family: "Century Gothic";
+	color:  white;
+
+
+
+}
+h3{
+	text-align: center;
+	font-family: "Century Gothic";
+	color:  white;
+
+}
+#jug1{
+	 width: 450px;
+     height: 200px;
+     padding-left: 80px;
+     float: left;
+}
+#bancada{
+	float:left;
+	width: 500px;
+    height: 200px;
+  
+}
+#btn1{
+	 float: left;
+	 width: 180px;
+     height:70px;
+     padding-left: 440px;
+     padding-top: 250px;
+}
+#resul{
+	 float: left;
+	 width: 50px;
+     height:50px;
+     padding-right: 460px;
+     padding-top: 350px;
+}
+

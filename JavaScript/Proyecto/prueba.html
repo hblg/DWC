@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv=“Content-Type” content=“text/html; charset=UTF-8”>
+        <title></title>
+        
+    </head>
+    <body>
+        <script type=“text/javascript”>
+            
+            function carta(palo,figura,valor){
+                this.palo = palo;
+                this.figura = figura;
+                this.valor = valor;
+            }
+            
+            var palos = new Array(‘oros’, 'copas’, 'espadas’, 'bastos’);
+            var cartas = new Array('as’, 'dos’, 'tres’, 'cuatro’, 'cinco’, 'seis’, 'siete’, 'sota’, 'caballo’, 'rey’);
+            var tantos = new Array(11, 0, 10, 0, 0, 0, 0, 2, 3, 4);
+            Array.prototype.crear=function() {                       
+                var k = 0;
+                for(i = 0; i < 4; i++){
+                    for(j = 0; j < 10; j++){
+                        this[k]= new carta(palos[i], cartas[j], tantos[j]);
+                        k++;
+                    }
+                }                
+            }
+            
+            var baraja=Array(40);
+            baraja.crear();
+            
+            function ver(baraja){
+                for(x = 0; x < 40; x++){
+                    //document.write(baraja[x].figura + ’ de ’ + baraja[x].palo + ’ = ’ + baraja[x].valor + ’<br/>’);
+                    var imagenes = ’<img src=“baraja/’ + baraja[x].figura + ’_de_’ + baraja[x].palo + ’.png” heigth=“96” width=“63”/>’;
+                    document.write(imagenes);
+                }
+            }
+            
+            function barajar(baraja){
+                for(i = 0; i < baraja.cambios; i++){
+                    var cartaA =parseInt(Math.random() * 40);
+                    do{
+                        var cartaB =parseInt(Math.random() * 40);
+                    }while(cartaB == cartaA);
+                    var aux;
+                    
+                    aux = baraja[cartaB];
+                    baraja[cartaB] = baraja[cartaA];
+                    baraja[cartaA] = aux;
+                }
+            }
+            
+            Array.prototype.ordenar = function(){
+                this.sort(function(a,b){
+                    if(a.figura > b.figura){
+                        return 1;
+                    }
+                    if(a.figura < b.figura){
+                        return -1;
+                    }
+                });
+            }
+
+            ver(baraja);
+            document.write(’<hr/>’);
+            baraja.ordenar();
+            ver(baraja);
+            document.write(’<hr/>’);
+            Array.prototype.cambios = 10;
+            barajar(baraja);
+            ver(baraja);
+            
+        </script>
+    </body>
+</html>

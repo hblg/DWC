@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio 3 BOM</title>
+<script type="text/javascript">
+
+window.resizeTo(200,200);
+    function izquierda(){
+        window.moveBy(-10,0);
+    }
+    function derecha(){
+        window.moveBy(10,0);
+    }
+    function arriba(){
+        window.moveBy(0,-10);
+    }
+    function abajo(){
+        window.moveBy(0,10);
+    }
+    function doble(){ 
+        var ancho = window.outerWidth; 
+        var alto = window.outerHeight;
+        window.resizeBy(ancho+ancho, alto+alto);
+        
+    }
+    function mitad(){
+        var ancho = window.outerWidth; 
+        var alto = window.outerHeight;
+        window.resizeBy(ancho-ancho/2, alto-alto/2);
+    }
+</script>
+</head>
+
+<body>
+
+    <button onclick="derecha()">derecha</button>
+    <button onclick="izquierda()">izquierda</button>
+    <button onclick="abajo()">abajo</button>
+    <button onclick="arriba()">arriba</button>
+    <button onclick="doble()">agrandar</button>
+    <button onclick="mitad()">reducir</button>
+
+</body>
+</html>

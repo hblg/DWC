@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Ejercicio 1</title>
+<script language="JavaScript" type="text/javascript">
+
+/* 1-Crear una página en el que aparecerá un cuadro de texto y un boton. 
+Al pulsar el boton pediremos al servidor web el contenido del fichero que le 
+indiquemos en el cuadro de texto. Este texto deberá aparecer debajo de los 
+elementos en un cuadro. En el caso de que el fichero no exista en el servidor 
+tendra que avisarnos de ello.*/
+
+var peticion = null; 
+peticion = new XMLHttpRequest();
+function pulsa(url) {
+	if(peticion) {
+	peticion.onreadystatechange = function () {
+		if (peticion.readyState == 4) {
+			if(peticion.status==200) {
+				var datosDoc = peticion.responseText;
+				document.getElementById('resultado').innerHTML = datosDoc;
+			} else {
+				alert("Error en la peticion: "+peticion.statusText);
+			}
+		}
+	}
+	peticion.open('GET', url, true); 
+	peticion.send();
+	}
+
+}
+</script>
+</head>
+<body>
+<!--Cuando ocurra el evento onclick se llamará la función coger-->
+<button onclick="pulsa('prueba.xml')">Pulsa</button>
+<table border="4">
+<tr>
+<td><span id="resultado">Sin resultado</span></td>
+</tr>
+</table>
+</body>
+</html>

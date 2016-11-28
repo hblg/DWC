@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+   <title>Ejercicio 1 Eventos 2</title> 
+<meta charset="utf-8"/>
+</head>
+<script type="text/javascript">
+/* 1-Crear una página la cual cambia a colores distintos a un párrafo, según hagamos sobre él un click o un doble click. Para lograrlo tanto para el evento click y doble click llamaremos a la misma función. Y según el tipo de evento cambiar de color al párrafo.
+*/
+       window.onload = function(){
+            var parrafo = document.getElementsByTagName('p');
+                for (var i = 0; i < parrafo.length; i++){
+                    parrafo[i].addEventListener("click", cambColor,false);
+                    parrafo[i].addEventListener("dblclick", cambColor,false);
+                }
+        }
+        function cambColor(evento){
+            if (evento.type == "click"){
+                this.style.color = " #ff6699";
+            }else if(evento.type == "dblclick"){
+                this.style.color = "#66ffff";
+            }
+        }
+        
+    </script>
+  </head>
+  <body>
+    <h2>Ejercicio 1</h2>
+    <p id="cambiar">Tradicionalmente se venía utilizando en páginas web HTML para realizar operaciones y únicamente en el marco de la aplicación cliente, sin acceso a funciones del servidor. Actualmente es ampliamente utilizado para enviar y recibir información del servidor junto con ayuda de otras tecnologías como AJAX. JavaScript se interpreta en el agente de usuario al mismo tiempo que las sentencias van descargándose junto con el código HTML.</p>
+    
+    <p id="cambiar">JavaScript se diseñó con una sintaxis similar a C, aunque adopta nombres y convenciones del lenguaje de programación Java. Sin embargo, Java y JavaScript tienen semánticas y propósitos diferentes.
+    Todos los navegadores modernos interpretan el código JavaScript integrado en las páginas web. Para interactuar con una página web se provee al lenguaje JavaScript de una implementación del Document Object Model (DOM).</p>
+
+</script>
+</html>

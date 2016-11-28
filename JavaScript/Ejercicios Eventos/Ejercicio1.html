@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<title> Ejercicio 1 Eventos </title>
+<style>
+
+</style>
+<script type="text/javascript">
+/* 1-Crear una página con tres botones con las leyendas "1", "2" y "3".
+ Mostrar un mensaje indicando qué botón se presionó. Usando 1 sola función.*/
+	function mostrar(element){
+		alert("Has pulsado el boton : " + element.id);
+	}
+</script>
+</head>
+</html>
+
+<body>
+	<div>
+	<h2>Ejercicio 1</h2>
+	 <input type="button" id="boton1" value="1" onclick="mostrar(this)" /> 
+	 <input type="button" id="boton2" value="2" onclick="mostrar(this)" />             
+	 <input type="button" id="boton3" value="3" onclick="mostrar(this)" />             
+	</div>
+</body>
+</html>

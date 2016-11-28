@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Ejercicio 4 Formularios</title> 
+<meta charset="utf-8"/>
+<script type="text/javascript">
+	/* 4-Crea una página con un formulario que nos pedirá datos personales cada uno en un cuadro de texto: 
+	nombre, apellidos, dirección, población, código postal, provincia. Ordena los campos de manera  que queden
+	 en dos columnas. Al final del formulario habrá un botón de enviar y otro de limpiar el formulario. Al
+	  iniciar la página el cuadro de texto del nombre deberá tener el puntero listo para escribir y cuando 
+	  pulsemos la tecla enter saltara al siguiente campo. En caso de que no se haya rellenado el campo deberá 
+	   poner el fondo rojo y no permitirá pulsar el botón de envió.*/
+	function focus() {
+			document.getElementById("nombre").focus();
+	}
+	function enviar(){
+		var nom= document.getElementById("nombre");
+		var apell= document.getElementById("apellido");
+		var dir= document.getElementById("direccion");
+		var pobl= document.getElementById("poblacion");
+		var codPostal= document.getElementById("codPostal");
+		var provi= document.getElementById("provincia");
+		var i=0;
+
+		if (nom.value ==""){	
+			nom.style.background="#ff9999";
+			i=1;
+		}if (apell.value == ""){
+			apell.style.background="#ff9999";
+			i=1;
+		}if (dir.value == ""){
+			dir.style.background="#ff9999";
+			i=1;
+
+		}if (pobl.value == ""){
+			pobl.style.background="#ff9999";
+			i=1;
+
+		}if (codPostal.value == ""){
+			codPostal.style.background="#ff9999";
+			i=1;
+
+		}if (provi.value == ""){
+			provi.style.background="#ff9999";
+			i=1;
+
+		}if (i == 1){
+			return false; 
+
+		}else{
+			document-forms["formulario"].submit();
+			return true;
+
+		}
+	}
+	function enter(tab, y){
+		var y=(typeof event!='undefined') ?window.event:y;
+		if(y.keyCode==13){
+			var eleme= document.forms[0].elements;
+			for(var a=0; a<eleme.length;a++){
+				var x=(a==eleme.length-1)?0:a+1;
+				if (tab==eleme[a]){
+					eleme[x].focus();
+					break
+				}//if
+			}//for
+			return false;
+		}//if
+	}//function
+	
+
+
+</script>
+</head>
+<body onload="focus()">
+	<h4>Formulario: </h4>
+	<form name="formulario" action="#" method="post">
+		</br>
+			Nombre: <input type="name" id="nombre" onkeypress="enter(this, event)"/>
+			</br></br>
+			Apellido: <input type="name" id="apellido" onkeypress="enter(this, event)"/>
+			</br></br>
+			Direccion: <input type="name" id="direccion" onkeypress="enter(this, event)"/>
+			</br></br>
+			Poblacion: <input type="name" id="poblacion" onkeypress="enter(this, event)"/>
+			</br></br>
+			Codigo postal: <input type="number" id="codPostal" onkeypress="enter(this, event)"/>
+			</br></br>
+			Provincia: <input type="name" id="provincia" onkeypress="enter(this, event)"/>
+			</br></br>
+		<input type="button" value="Aceptar" name="aceptar" onclick="enviar()" />
+		<input type="reset" value="Cancelar" name="cancelar" />
+	
+	</form>
+</body>
+</html>

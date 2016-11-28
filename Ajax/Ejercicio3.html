@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<style>
+  img{
+    height:300px;
+    width: 200px;
+  }
+</style>
+<head>
+<meta charset="utf-8"/>
+<title>Ejercicio 3</title>
+<script language="JavaScript" type="text/javascript">
+/* 3-Crear una página en la que apareceran los carteles de las peliculas del 
+ejercicio anterior. Cuando pulsemos sobre cada cartel aparecera la sinopsis de 
+esa pelicula en un partado que estara debajo de las imagenes. Cada sinopsis se 
+guardaran en un fichero diferente..*/
+
+function sinopsis(url) {
+  var peticion = new XMLHttpRequest();
+  peticion.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  peticion.open("GET", url, true);
+  peticion.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="Sinopsis";
+  var x = xmlDoc.getElementsByTagName("Pelicula");
+  for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("Sinopsis")[0].childNodes[0].nodeValue +
+    "</td><td>" ;
+    
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+
+</script>
+</head>
+<body>
+<!--Cuando ocurra el evento onclick se llamará la función coger-->
+  <img  src="img/resorvoirDogs.jpg" onclick="sinopsis('xmls/reservoir.xml')"></img>
+  <img  src="img/trainspotting.jpg" onclick="sinopsis('xmls/trainspotting.xml')"></img>
+  <img  src="img/batman.jpg" onclick="sinopsis('xmls/batman-Begins.xml')" ></img>
+  <img  src="img/inception.jpg" onclick="sinopsis('xmls/inception.xml')"></img>
+  <img  src="img/snatch.jpg" onclick="sinopsis('xmls/snatch.xml')"></img>
+  <img  src="img/gladiator.jpg" onclick="sinopsis('xmls/gladiator.xml')"></img>
+
+<br><br>
+<table id="demo">
+</table>
+</body>
+</html>

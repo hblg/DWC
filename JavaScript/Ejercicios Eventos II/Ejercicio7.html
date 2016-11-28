@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    body {background-color:#66ffc2;}
+    </style>
+<script type="text/javascript">
+/*7- Crea una pagina en la que el fondo cambiara de color segun el raton este cerca del borde de la pagina. 
+	Si esta a menos del 10% se pondra rojo. Si esta entre el 10% y el 20% estara amarillo.Y sino estara de color verde.*/
+	
+	    window.onload = function(){
+            
+        document.addEventListener("mousemove", posiciones, false);
+        }
+        function posiciones(event){
+            var x = event.pageX;
+            var y = event.pageY;
+                    
+            var anchura = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var altura = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            color(x,y,anchura,altura);
+                    
+        }
+         function color(x,y,anchura,altura){
+            if ( x < (anchura*10/100) | x > (anchura-(anchura*10/100)) | y < (altura*10/100) | y > (altura-(altura*10/100))){
+                document.body.style.backgroundColor = "#ff4d4d";
+            } else if (x < (anchura*20/100) | x > (anchura-(anchura*20/100)) | y < (altura*20/100) | y > (altura-(altura*20/100))){
+                document.body.style.backgroundColor = "#ffffb3";
+            }else {
+                document.body.style.backgroundColor = "#66ffc2";
+            }
+        }
+    
+</script>
+</head>
+<body>
+
+</body>
+</html>

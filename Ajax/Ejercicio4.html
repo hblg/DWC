@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<style>
+  body{
+  	background-image: url("img/fondo.jpg");
+  	background-size:  1280px 1024px ;
+   }
+  img{
+    height:300px;
+    width: 200px;
+  }
+  #boton{
+    height: 50px;
+    width: 50px;
+    padding-top: 500px ;
+  }
+</style>
+<head>
+<meta charset="utf-8"/>
+<title>Ejercicio 3</title>
+<script language="JavaScript" type="text/javascript">
+/* 4-Crear una página en la que habra un boton para pedir al servidor los datos 
+de las peliculas.  Cuando pulsemos sobre el nos apareceran dos objetos select 
+(menu desplegable). En el primero elegiremos el nombre del director y en funcion 
+de esa eleccion, en el segundo nos apareceran las peliculas de ese director. 
+Cuando hayamos elegido la pelicula aparecera una breve sinospsis de la pelicula 
+debajo de los objetos select. 
+Si no se selecciona director, no aparecera ninguna pelicula para elegir.
+*/
+
+function elegir(url) {
+  var peticion = new XMLHttpRequest();
+  peticion.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  peticion.open("GET", url, true);
+  peticion.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="Sinopsis";
+  var x = xmlDoc.getElementsByTagName("Pelicula");
+  for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("Sinopsis")[0].childNodes[0].nodeValue +
+    "</td><td>" ;
+    
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+
+</script>
+</head>
+<body>
+<center>
+<div id="boton">
+<!--Cuando ocurra el evento onclick se llamará la función coger-->
+  <input type="button" onclick="elegir('peliculas.xml')" id="btnElegir" value="Elegir"/>
+</div>
+<br><br>
+<table id="demo">
+</table>
+</center>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Ejercicio 3 Formularios</title> 
+<meta charset="utf-8"/>
+<script type="text/javascript">
+	/* 3-Crea una página con un formulario que simulara la pagina de ayuda de cualquier web. 
+	Deberá pedirnos nombre y apellidos, habrá un área de texto para comentar nuestro problema 
+	(que tendrá un límite de 100 caracteres), teléfono (que solo aceptara números) y un campo 
+	de e-mail (que deberá tener formato de email). Si no se cumplen los requisitos no dejara enviar el formulario.*/
+	function enviar(){
+		var email = document.getElementById("email");
+		var datos = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		if (datos.test(email.value) == false) {
+			return false;
+		}
+			return true;
+	}
+	
+</script>
+</head>
+<body>
+	<h4>Formulario: </h4>
+	<form name="formulario" action="#" method="post" onsubmit="return enviar()">
+		</br>
+			Nombre: <input type="name" id="nombre" />
+			</br></br>
+			Apellido: <input type="name" id="apellido"/>
+			</br></br>
+			Telefono: <input type="number" id="telefono" />
+			</br></br>
+			Email: <input type="email" id="email" />
+			</br></br>
+			Comentar: <textarea id="comentar" cols="40" rows="3" name="descripcion" maxlength="100""> </textarea>
+			</br></br>
+		<input type="submit" value="Aceptar" name="aceptar" />
+
+		<input type="reset" value="Cancelar" name="cancelar" />
+	
+	</form>
+</body>
+</html>

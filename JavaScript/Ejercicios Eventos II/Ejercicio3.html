@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.master {height:270px;width:800px;padding:10px;border:2px solid red; 
+	 background-color:green;margin:0 auto 0 auto;}
+div 	{height:100px;width:500px;padding:10px;border:2px solid red; 	
+	 background-color:blue;margin:0 auto 0 auto;}
+p	{background-color:orange;text-align:center;}
+span	{background-color:purple;border:2px solid red;}
+
+</style>
+<script type="text/javascript">
+/* 3-Completa el código siguiente para que cuando hagamos 
+click en algun elemento se ponga de color amarillo todo elemento
+que  se encuentre por encima de este , simpre y cuando no tenga un limite rojo.*/
+	window.onload = function(){
+		var elementos = document.body.getElementsByTagName("*");
+			for (var i = 0; i < elementos.length; i++){
+				elementos[i].addEventListener("click", cambia,false);
+		}//for
+	}//window
+	function cambia(event) {
+	this.style.backgroundColor='yellow';
+	if (this.style.borderColor=="red" | this.tagName == "div" | this.tagName=="span" ){
+		event.stopPropagation();
+	}//if
+
+	}//function
+</script>
+</head>
+<body>
+<div class="master">
+<div><p>Soy un parrafo.<span>Soy un span</span></p></div>
+</br>
+<div><p>Soy un parrafo.<span>Soy un span</span></p></div>
+</div>
+</body>
+</html>
+

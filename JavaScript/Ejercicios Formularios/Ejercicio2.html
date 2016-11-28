@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Ejercicio 2 Formularios</title> 
+   <style>
+		div{
+			height: 50px;
+			width: 50px;
+			float: left;
+			margin-left: 25px;
+			background: #334d4d;	
+		}
+	</style>
+<meta charset="utf-8"/>
+<script type="text/javascript">
+	/* 2- Crea una página con un formulario que nos dejara seleccionar de entre 
+	cuatro cuadrados que habrá debajo a cuál de ellos le cambiaremos el color. 
+	Para ello utiliza un menú desplegable para elegir el cuadrado y otro para e
+	legir el color al que cambiara. Los cambios se aplicaran cuando pulsemos un botón.*/
+		function cambiar() {
+			
+			var cuadrado = document.getElementById("cuadrado");
+			var cuadInd = cuadrado.selectedIndex;
+			var cuadOpti = cuadrado.options[cuadInd];
+			var cuad = cuadOpti.value;
+			
+			var color = document.getElementById("color");
+			var colorInd = color.selectedIndex;
+			var colorOpt = color.options[colorInd];
+			var color = colorOpt.value;
+
+			var cuadr = document.getElementById(cuad);
+			cuadr.style.background=color;
+		}
+
+		
+</script>
+</head>
+<body>
+	<h4>Formulario: </h4>
+	<form name="formulario" action="#" method="post">
+		<table>
+			<div id="cuad1"></div>
+			<div id="cuad2"></div>
+			<div id="cuad3"></div>
+			<div id="cuad4"></div>
+		</table>
+		</br>
+		</br>
+		</br>
+		</br>
+		<select name="cuadrado" id="cuadrado">
+			<option value="" >Elige un cuadro</option>
+			<option value="cuad1">cuadro 1</option>
+			<option value="cuad2">cuadro 2</option>
+			<option value="cuad3">cuadro 3</option>
+			<option value="cuad4">cuadro 4</option>
+		</select>
+		<select name="color" id="color">
+			<option value="" >Elige un color</option>
+			<option value="#ff4d4d">rojo</option>
+			<option value="#66ff99">verde</option>
+			<option value="#80dfff">azul</option>
+			<option value="#ffccff">rosa</option>
+		</select>
+		</br>
+		</br>
+		<input type="button" value="Aceptar" name="aceptar" onclick="cambiar()" />
+		
+		<input type="reset" value="Cancelar" name="cancelar" />
+
+	</form>
+</body>
+</html>

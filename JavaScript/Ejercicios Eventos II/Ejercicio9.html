@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	#cuadrado{
+		background: #ffff80;
+		position: fixed;
+
+	}
+     body {background-color:#f0f5f5;}
+	}
+	</style>
+<script type="text/javascript">
+	/*9- Crea una pagina en la que aparecera un cuadrado de color amarillo en el centro de la pantalla. 
+	Este cuadrado se debera desplazar  cuando hagamos click encima de él  y se detendra cuando soltemos el boton. 
+	Cuando se este desplazando el cuadrado estara de color azul.	*/ 
+	  	var posiAnchura = window.innerWidth;
+		var posiAltura = window.innerHeight;
+		var posiAnchura2 = posiAnchura/2;
+		var posiAltura2 = posiAltura/2;
+		var posiX = 0;
+		var posiY = 0;
+
+		window.onload = function(){
+		    centro();
+		    var cuadrado = document.getElementById("cuadrado");
+		    cuadrado.addEventListener("mousedown", mover, true);
+		    cuadrado.addEventListener("mouseup", parar, true);
+		}
+		function centro(){
+		    var cuadrado = document.getElementById("cuadrado");
+		    cuadrado.style.width="200px";
+		    cuadrado.style.height= "200px";
+		    posiAnch = posiAnchura2 - 50;
+		    posiAlt = posiAltura2 - 50;
+		    
+		    cuadrado.style.left = posiAnch + "px";
+		    cuadrado.style.top = posiAlt + "px";
+		}
+		function mover(event) {
+		    cuadrado.addEventListener("mousemove", mover2, true);
+		}
+		function mover2(event) {
+		    var cuadrado = document.getElementById("cuadrado");
+		    var movAnch = event.pageX;
+		    var movAltu = event.pageY;
+		    var posiAnchura2 = movAnch - 50;
+		    var posiAltura2 = movAltu - 50;
+		    cuadrado.style.left = posiAnchura2 + "px";
+		    cuadrado.style.top = posiAltura2 + "px";
+		    cuadrado.style.background = "#1affff";
+		}
+		function parar(event) {
+		    var cuadrado = document.getElementById("cuadrado");
+		    cuadrado.removeEventListener("mousemove", mover2, true);
+		    cuadrado.style.background = "#ffff80";
+		}
+			  
+
+
+</script>
+</head>
+<body>	
+	<div id="cuadrado"></div>	
+</body>
+</html>

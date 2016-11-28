@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Siete y medio</title> 
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="cartas.css">
+<script type="text/javascript">
+	var contJugador=0;
+    var contOrdenador=0;
+       
+       function lanzarJug(){
+                  
+            var numImg = 40;
+            var numAlea = Math.floor(Math.random() * numImg ) + 1;
+            var carta = "img/carta" + numAlea + ".PNG";
+            document.getElementById("jugador").src = carta;
+            var puntosJug = document.getElementById("puntosjugador");
+         
+            
+            // asigna el valor de la carta aleatoria
+            contJugador= contJugador + valor_carta(numAlea);
+            puntosJug.innerHTML = contJugador;
+       }
+        function lanzarOrde(){
+            var numAlea1 = Math.floor(Math.random() * numImg ) + 1;
+            var carta1 = "img/carta" + numAlea1 + ".PNG";
+            document.getElementById("banc").src = carta1;
+            var puntosOrde = document.getElementById("puntosordenador");
+            
+            contOrdenador = contOrdenador + valor_carta(numAlea1);
+            puntosOrde.innerHTML = contOrdenador;
+            
+            if(contJugador <= 7.5 || contOrdenador <= 7.5){
+                alert("has ganado!");
+                
+            }
+            
+            
+         }
+          
+            
+        function valor_carta(carta){
+            
+            var valor;
+            
+            if(carta >= 1 && carta <=4){
+                valor = 1;
+            }else if(carta >= 5 && carta <= 8){
+                valor = 2;
+            }else if (carta >= 9 && carta <= 12){    
+                valor = 3;
+            }else if (carta >= 13 && carta <= 16){    
+                valor = 4;  
+            }else if (carta >= 17 && carta <= 20){    
+                valor = 5; 
+            }else if (carta >= 21 && carta <= 24){    
+                valor = 6;  
+            }else if (carta >= 25 && carta <= 28){    
+                valor = 7; 
+            }else if (carta >= 29 && carta <= 32){    
+                valor = 0.5; 
+            }else if (carta >= 33 && carta <= 36){    
+                valor = 0.5;     
+            }else if (carta >= 37 && carta <= 40){    
+                valor = 0.5; 
+            }
+            
+            return valor;
+            
+            
+            
+        }
+	
+
+</script>
+</head>
+<body>
+	<h2>Bienvenido al juego de siete y medio</h2>
+	<center>
+	<div id="jug1">
+		<table border=1>
+			<tr>
+				<td><h3>Jugador</h3></td>
+			</tr>
+			<tr>
+	            <td><img src="img/img1.jpg" id="jugador"  onclick="lanzarJug()" width="240" height="390"/></td>
+			</tr>
+			<tr>
+				<td><h3>Puntos:</h3></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="bancada">
+		<table border=1>
+			<tr>
+				<td><h3>Bancada</h3></td>
+			</tr>
+			<tr>
+	            <td><img src="img/img1.jpg" id="banc" onclick="lanzarOrde()" width="240" height="390"/></td>
+			</tr>
+			<tr>
+				<td><h3>Puntos:</h3></td>
+			</tr>
+		</table>
+	</div>
+	<div id="btn1">
+    <input type="button" id="boton3" value="Plantar" onclick="plantar()"/>
+    <input type="button" id="boton2" value="Reset" onclick="reset()"/>
+    </div>
+    </center>
+    <div id="resul">
+    	<table border=1>
+			<tr>
+				<td><h3>Resultado:</h3></td>
+			</tr>
+	</table>
+	</div>
+    
+</body>
+</html>

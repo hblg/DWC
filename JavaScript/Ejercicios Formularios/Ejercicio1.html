@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Ejercicio 1 Formularios</title> 
+<meta charset="utf-8"/>
+<script type="text/javascript">
+	/*1- Crear una página con un formulario que nos pedirá nombre, apellidos y dirección en 
+	diferentes cuadros de texto. Al pulsar el botón comprobar deberá mostrarnos en pantalla 
+	un alert con los datos introducidos. Si algún campo no está rellenado deberá alertarnos de ello.*/
+	function validar(elemento){
+
+		if(elemento.elements[0].value==""){
+			alert("El campo nombre debe tener algun valor");
+			return false;
+		}else if(elemento.elements["apellido"].value==""){
+			alert("El campo apellido debe tener algun valor");
+			return false;
+		}else if(elemento.direccion.value==""){
+			alert("El campo direccion debe tener algun valor");
+			return false;
+		}
+			return true;
+		
+	}
+
+</script>
+</head>
+<body>
+	<h4>Formulario: </h4>
+	<form name="formulario" action="#" method="post" onsubmit="return validar(this)">
+		</br>
+			Nombre: <input type="name" id="nombre" />
+			</br></br>
+			Apellido: <input type="name" id="apellido"/>
+			</br></br>
+			Direccion: <input type="name" id="direccion" />
+			</br></br>
+		<input type="submit" value="Aceptar" name="aceptar" />
+
+		<input type="reset" value="Cancelar" name="cancelar" />
+	</form>
+</body>
+</html>

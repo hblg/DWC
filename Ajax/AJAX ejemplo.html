@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<title>Página de ejemplo</title>
+<script language="JavaScript" type="text/javascript">
+var peticion01 = null; 
+peticion01 = new XMLHttpRequest();
+function Coger(url) {
+	if(peticion01) {
+	peticion01.onreadystatechange = function () {
+		if (peticion01.readyState == 4) {
+			if(peticion01.status==200) {
+				var datosDoc = peticion01.responseText;
+				document.getElementById('resultado').innerHTML = datosDoc;
+			} else {
+				alert("Error en la peticion: "+peticion01.statusText);
+			}
+		}
+	}
+	peticion01.open('GET', url, true); 
+	peticion01.send();
+	}
+
+}
+</script>
+</head>
+<body>
+<!--Cuando ocurra el evento oneclick se llamará la función coger-->
+<button onclick="Coger('Ajax/prueba.xml')">Coge un documento</button>
+<table border="4">
+<tr>
+<td><span id="resultado">Sin resultado</span></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+	/* 6- Crear una página que tendrá un botón con el que abriremos una nueva página de 200x200 pixeles. 
+  Esta pagina se deberá cerrar cuando pasen 5 segundos sin que el usuario tenga actividad( haga click o mueva el raton).*/
+	 
+  
+   var tiempoEs = setTimeout(cerrarVen, 5000);
+
+    function cerrarVen(){
+       window.close();
+    }
+    function actualizar(){
+       clearTimeout(tiempoEs);
+        tiempoEs=setTimeout(cerrarVen, 5000);
+    }
+
+
+</script>
+</head>
+<body>
+	<h2>Se cerrara en 5 segundos</h2>
+</body>
+</html>

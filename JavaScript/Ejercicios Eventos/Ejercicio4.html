@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>	
+    <title>Ejercicio 4 Eventos</title> 
+</head>
+<style type="text/css">
+.linea{
+	height:100px; 
+	width:100px; 
+	background:#00b8e6;
+	display:inline-block;
+}
+</style>
+<script type="text/javascript">
+window.onload = function (){
+cuadrados = document.getElementsByTagName("div");
+for (var i=0; i<cuadrados.length;i++){
+	cuadrados[i].onmouseenter = verde;
+	cuadrados[i].onmouseleave = azul;
+	cuadrados[i].onclick = rojo;
+}
+}
+	function verde(){
+	    this.style.backgroundColor="#66cc99";
+	}
+	function azul(){
+	    this.style.backgroundColor="#00b8e6";
+	}
+	function rojo(){
+	    this.style.backgroundColor="#ff6666";
+	}
+
+</script>
+<body>
+	<h2>Ejercicio 4</h2>
+    <div class="linea">ASR31</div>
+    <div class="linea">ASR32</div>
+    <div class="linea">SM21</div>
+    <div class="linea">SM22</div>
+    <div class="linea">DW31</div>
+    <div class="linea">DW32</div>
+</body>
+</html>

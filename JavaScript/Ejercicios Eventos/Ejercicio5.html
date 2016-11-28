@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>	
+    <title>Ejercicio 5 Eventos</title> 
+</head>
+<script type="text/javascript">
+	/* 5-Crea esta lista de enlaces, al pasar el ratón por encima, 
+	muestra la dirección a la cual apuntan en el editor de texto.*/
+	function url(element){
+        var urls = element.href;
+        
+        var muestra = document.getElementById("lista");
+        muestra.placeholder = urls;
+        
+    }
+
+</script>
+<body>
+<h2>Ejercicio 5</h2>
+ <input type="text" id="lista"/>
+	<ul>
+        <li><a href="http://www.adobe.com/es/" onmouseover="url(this)">Adobe</a></li>
+        <li><a href="http://www.apple.com/es/" onmouseover="url(this)">Apple</a></li>
+        <li><a href="https://www.ibm.com/es-es/" onmouseover="url(this)">IBM</a></li>
+    </ul>   
+</body>
+</html>

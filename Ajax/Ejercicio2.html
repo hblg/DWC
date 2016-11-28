@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<style>
+	table,th,td {
+	  border : 1px solid black;
+	  border-collapse: collapse;
+	}
+	th,td {
+	  padding: 5px;
+	}
+</style>
+<head>
+<meta charset="utf-8"/>
+<title>Ejercicio 2</title>
+<script language="JavaScript" type="text/javascript">
+/* 2-Crear una página a la que le pediremos la lista de películas almacenadas
+en un fichero XML que estara en el servidor. A la hora de mostrarlos, se creara 
+una tabla y apareceran en dos columnas separadas.*/
+
+function lista(url) {
+  var peticion = new XMLHttpRequest();
+  peticion.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  peticion.open("GET", url, true);
+  peticion.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Director</th><th>Titulo</th></tr>";
+  var x = xmlDoc.getElementsByTagName("Pelicula");
+  for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("Titulo")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+
+</script>
+</head>
+<body>
+<!--Cuando ocurra el evento onclick se llamará la función coger-->
+<button onclick="lista('peliculas.xml')">Lista de peliculas</button>
+<br><br>
+<table id="demo">
+</table>
+</body>
+</html>

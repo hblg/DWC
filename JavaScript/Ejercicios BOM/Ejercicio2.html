@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio 2 BOM</title>
+<script type="text/javascript">
+
+function info(){
+    //Primera
+    var texto = "";
+    texto += "URL-a: ";
+    texto += document.URL;
+    var parr = document.createElement('p');
+    var txt = document.createTextNode(texto);
+    parr.appendChild(txt);
+    document.body.appendChild(parr);
+    //Segunda
+    var nave;
+    nave = "El navegador que estas utilizando: " + navigator.appName + " " + navigator.appVersion;
+    var parrDos = document.createElement('p');
+    var txt2 = document.createTextNode(nave);
+    parrDos.appendChild(txt2);
+    document.body.appendChild(parrDos);
+    
+    //Tercero
+    var titulo;
+    titulo = " El titulo de la pagina: " + document.title;
+    var parrTres= document.createElement('p');
+    var txt3 = document.createTextNode(titulo);
+    parrTres.appendChild(txt3);
+    document.body.appendChild(parrTres);
+    
+    //Cuarto
+    var num;
+    num = "El numero de formularios que hay en la página : " + document.forms.length;
+    var parrCuatro = document.createElement('p');
+    var txt4 = document.createTextNode(num);
+    parrCuatro.appendChild(txt4);
+    document.body.appendChild(parrCuatro);
+    
+    //Quinto
+    var ventana;
+    ventana = "El tamaño de la ventana actualmente: " + window.innerHeight + " Width: " + window.innerWidth;
+    var parrCin = document.createElement('p');
+    var txt5 = document.createTextNode(ventana);
+    parrCin.appendChild(txt5);
+    document.body.appendChild(parrCin);
+    
+    //Sexto  
+    if (window.history.length > 1){
+        alert("Deja de navegar!");
+    }
+    
+}
+</script>
+</head>
+
+<body>
+
+<button id="boton" name="boton" onclick="info()">Informacion</button>
+
+</body>
+
+</html>
