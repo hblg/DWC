@@ -1,0 +1,32 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script type="text/javascript">
+        
+    $(document).ready(function(){
+        $('textarea').keyup(function(){
+          var cont=0; 
+          var pal = $(this).val();
+          pal=pal.split("");
+            for(var i in pal){
+               if ((pal[i]=='a') || (pal[i]=='e') || (pal[i]=='i') || (pal[i]=='o') || (pal[i]=='u')){
+                cont++;
+                }
+            }
+                if(cont%2==0){
+                  $("textarea").css('background-color','#99ddff');
+                   }else{
+                      $("textarea").css('background-color','#ff6600'); 
+                    }  
+                console.log(cont);    
+                });
+            
+           }); 
+</script>
+</head>
+<body>
+    <textarea rows="5" cols="100"></textarea>
+   </body>
+    
+    
+</html>

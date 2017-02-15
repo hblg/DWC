@@ -1,0 +1,30 @@
+{
+  "Peliculas": {
+    "Pelicula": [
+      {
+        "Director": "Quentin Tarantino",
+        "Titulo": "Reservoir dogs"
+      },
+      {
+        "Director": "Danny Boyle",
+        "Titulo": "Trainspotting"
+      },
+      {
+        "Director": "Christopher Nolan",
+        "Titulo": "Batman Begins"
+      },
+      {
+        "Director": " Christopher Nolan ",
+        "Titulo": "Inception"
+      },
+      {
+        "Director": " Guy Ritchie ",
+        "Titulo": "Snach"
+      },
+      {
+        "Director": "Ridley Scott",
+        "Titulo": "Gladiator"
+      }
+    ]
+  }
+}

@@ -15,30 +15,29 @@ ejercicio anterior. Cuando pulsemos sobre cada cartel aparecera la sinopsis de
 esa pelicula en un partado que estara debajo de las imagenes. Cada sinopsis se 
 guardaran en un fichero diferente..*/
 
-function sinopsis(url) {
-  var peticion = new XMLHttpRequest();
-  peticion.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      myFunction(this);
-    }
-  };
-  peticion.open("GET", url, true);
-  peticion.send();
-}
-function myFunction(xml) {
-  var i;
-  var xmlDoc = xml.responseXML;
-  var table="Sinopsis";
-  var x = xmlDoc.getElementsByTagName("Pelicula");
-  for (i = 0; i <x.length; i++) {
-    table += "<tr><td>" +
-    x[i].getElementsByTagName("Sinopsis")[0].childNodes[0].nodeValue +
-    "</td><td>" ;
-    
+  function sinopsis(url) {
+    var peticion = new XMLHttpRequest();
+    peticion.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+      }
+    };
+    peticion.open("GET", url, true);
+    peticion.send();
   }
-  document.getElementById("demo").innerHTML = table;
-}
-
+  function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var table="Sinopsis";
+    var x = xmlDoc.getElementsByTagName("Pelicula");
+    for (i = 0; i <x.length; i++) {
+      table += "<tr><td>" +
+      x[i].getElementsByTagName("Sinopsis")[0].childNodes[0].nodeValue +
+      "</td><td>" ;
+      
+    }
+    document.getElementById("demo").innerHTML = table;
+  }
 </script>
 </head>
 <body>

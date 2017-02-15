@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<style type="text/css">
+
+</style> 
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#envCalcu").click(function(e){
+        e.preventDefault();
+        var num = $('#num').val();
+        var num1 =$('#num1').val()
+        var signos = $('#signos').val();
+        var resul = $('#result');
+        var datos = {n: num,m: num1,s: signos};
+    $.ajax({
+      url : "calculo.php",
+      type: "POST",
+      data :  datos,
+      success: function(respuesta){
+      resul.html(respuesta);
+      }
+    });
+   });   
+});          
+</script>   
+</head>
+<body>
+    <form>
+        <input type="text" name="num" id="num" placeholder="num"/>
+        <input type="text" name="num1" id="num1" placeholder="num1"/>
+        <select id="signos">
+            <option value="suma">+</option>
+            <option value="resta">-</option>
+            <option value="division">/</option>
+            <option value="multiplicacion">*</option>
+        </select>
+        <input id="envCalcu" type="submit" value="calcular" value="calcular"/>
+        <label id="result" for="resultado">Resultado</label>
+    </form>
+        
+</body>
+</html>

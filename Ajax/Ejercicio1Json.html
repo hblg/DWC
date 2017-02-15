@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<style>
+	table,th,td {
+	  border : 1px solid black;
+	  border-collapse: collapse;
+	}
+	th,td {
+	  padding: 5px;
+	}
+</style>
+<head>
+<meta charset="utf-8"/>
+<title>Ejercicio 1 Json</title>
+<script language="JavaScript" type="text/javascript">
+/* 1- Rehacer el ejercicio 2 de los ejercicio anteriores para que en vez de 
+tener los datos en formato XML, este en JSON..*/
+
+function lista(url) {
+  var peticion = new XMLHttpRequest();
+  peticion.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  peticion.open("GET", url, true);
+  peticion.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = JSON.parse(xml.responseText);
+  console.log(xmlDoc);
+  var table="<tr><th>Director</th><th>Titulo</th></tr>";
+  for (i = 0; i <xmlDoc.Peliculas.Pelicula.length; i++) {
+    table += "<tr><td>" +
+    xmlDoc.Peliculas.Pelicula[i].Director +
+     "</td><td>" +
+    xmlDoc.Peliculas.Pelicula[i].Titulo +
+     "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+</head>
+<body>
+<!--Cuando ocurra el evento onclick se llamará la función coger-->
+<button onclick="lista('peliculas.json')">Lista de peliculas</button>
+<br><br>
+<table id="demo">
+</table>
+</body>
+</html>

@@ -9,15 +9,26 @@
     height:300px;
     width: 200px;
   }
-  #boton{
+  /*#boton{
     height: 50px;
-    width: 50px;
+    width: 100px;
     padding-top: 500px ;
-  }
+  }*/
+   #select1{
+     height: 50px;
+     width:100px;
+     padding-top: 500px;
+   }
+   #select2{
+     height: 50px;
+     width:100px;
+     padding-top: 500px;
+   
+   }
 </style>
 <head>
 <meta charset="utf-8"/>
-<title>Ejercicio 3</title>
+<title>Ejercicio 4</title>
 <script language="JavaScript" type="text/javascript">
 /* 4-Crear una página en la que habra un boton para pedir al servidor los datos 
 de las peliculas.  Cuando pulsemos sobre el nos apareceran dos objetos select 
@@ -27,42 +38,75 @@ Cuando hayamos elegido la pelicula aparecera una breve sinospsis de la pelicula
 debajo de los objetos select. 
 Si no se selecciona director, no aparecera ninguna pelicula para elegir.
 */
-
-function elegir(url) {
-  var peticion = new XMLHttpRequest();
-  peticion.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      myFunction(this);
+ function mostrar(url){
+    var peticion = new XMLHttpRequest();
+    peticion.onreadystatechange = function(){
+      if(this.readyState == 4){
+      if(this.status == 200){
+      var myFunction = this.responseXML;
+                                
+      peticion.open('GET', url, true);
+      peticion.send();
+      }
+                
+      }  
     }
-  };
-  peticion.open("GET", url, true);
-  peticion.send();
-}
+ }   
 function myFunction(xml) {
-  var i;
-  var xmlDoc = xml.responseXML;
-  var table="Sinopsis";
-  var x = xmlDoc.getElementsByTagName("Pelicula");
-  for (i = 0; i <x.length; i++) {
-    table += "<tr><td>" +
-    x[i].getElementsByTagName("Sinopsis")[0].childNodes[0].nodeValue +
-    "</td><td>" ;
-    
-  }
-  document.getElementById("demo").innerHTML = table;
+  var xmlDoc=xml.responseXML;
+	var slctDirect = "<select id='select' name='pelicula' onchange=cambio()>";
+	var repe = false;
+	var arrayDirectores=[];
+	pelis = xmlDoc.getElementsByTagName("Pelicula");
+	
+	for(var i = 0; i<pelis.length;i++){
+		repe=false;
+		for(var z=0;z<arrayDirectores.length;z++){
+			var director=pelis[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue;
+			if(director===arrayDirectores[z]){
+				repe=true;
+			}
+		}
+		if(repe==false){
+			arrayDirectores.push(pelis[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue);
+			slctDirect+="<option>"+
+			pelis[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue+"</option>";
+		}
+		
+	}
+	document.getElementById("resultado").innerHTML=slctDirect;
+	selDirectorId = document.getElementById("select");
+	
+	
+	function cambio(){
+		var valorSelect = selDirectorId.options[selDirectorId.selectedIndex].value;
+		var selectTitulos = "<select id='select1' name='title'>";
+	
+			for(var x=0;x<peliculas.length;x++){
+                if (pelis[x].getElementsByTagName("Director")[0].childNodes[0].nodeValue == valorSelect){
+                    selectTitulos += '<option>'+ pelis[x].getElementsByTagName("Titulo")[0].childNodes[0].nodeValue+'</option>'; 
+                }
+			}
+			selectTitulos+='</select>';
+			document.getElementById("resultado").innerHTML += selectTitulos;
+	}
 }
-
+ 
+</script>
+</body>
+</html>
 </script>
 </head>
 <body>
 <center>
-<div id="boton">
-<!--Cuando ocurra el evento onclick se llamará la función coger-->
-  <input type="button" onclick="elegir('peliculas.xml')" id="btnElegir" value="Elegir"/>
-</div>
-<br><br>
-<table id="demo">
-</table>
+  <input type="button" name="boton" onclick="mostrar('peliculas.xml')" value="Mostrar Peliculas"/>
+    <div id="resultado">
+      
+    </div>
+
+
 </center>
 </body>
 </html>
+ <body>
+ 

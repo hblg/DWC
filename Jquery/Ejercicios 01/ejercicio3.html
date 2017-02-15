@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Ejercicios JQuery3</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script languajes="javascript">
+</script>
+<style type="text/css">
+	
+	.noEmbarcado {
+		color: #801a00;
+	}
+	.embarcado {
+		color: #336699;
+	}
+	.pendiente {
+		color: #660066;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('h1 > i').eq(0).html(' 815 Oceanic');
+
+
+
+		var horaSalida;
+        horaSalida = $('#time > td').html();
+        if (horaSalida == ""){
+            horaSalida = " Sin asignar"}
+        	console.log(horaSalida);
+
+        var puertaSalida;
+        puertaSalida = $('#gate > td').html();
+        if (puertaSalida == ""){
+            puertaSalida = " Sin asignar"}
+        console.log(puertaSalida);
+        
+        var destino;
+        destino = $('#arrives > td').html();
+        if (destino == ""){
+            destino = " Sin asignar"}
+        console.log(destino);
+
+
+
+		$('h2').each(function( index ) {
+          $( this ).append(" " + new Date($.now()))
+        });
+
+
+
+		/*var pasajero;
+        $('ul > li').each(function( index ) {
+          pasajero = $(this).html();
+          if (pasajero.substring(0,1) == "H")
+          {
+              $(this).addClass( "embarcado" );
+          }else if (pasajero.substring(0,1) == "C"){
+              $(this).addClass( "pendiente" );
+          }else if (pasajero.substring(0,1) == "J" )
+          	  $(this).addClass( "noEmbarcado" );
+        });*/
+
+
+
+        var pasajero;
+        $('ul > li').each(function( index ) {
+          pasajero = $(this).html();
+          if (pasajero.substring(0,1) == "J")
+          {
+              $(this).addClass( "embarcado" );
+          }else{
+              $(this).addClass( "pendiente" );
+          }
+        });
+
+
+
+
+        $('#gate > td').html("Puerta 65");
+
+        $('#time > td').html("21:45");        
+        
+        $('#arrives > td').html("Tanger");
+
+
+
+        $('.pendiente').each(function( index ) {
+	        if ($(this).html() != "Charlie Pace")
+	        {
+            $(this).removeClass('pendiente').addClass('embarcado');
+	        }
+        });
+	});
+</script>
+</head>
+<body>
+<h1>Vuelo<i> sin especificar </i></h1>
+<h2>Logistica</h2>
+<table id="logistics">
+ <tbody>
+ <tr id="time">
+  <th>Hora:</th>
+  <td></td>
+ </tr>
+ <tr id="gate">
+  <th>Puerta:</th>
+  <td></td>
+ </tr>
+ <tr id="arrives">
+  <th>Destino:</th>
+  <td></td>
+ </tr>
+ </tbody>
+</table>
+<h2>Pasajeros</h2>
+<ul>
+ <li>Jack Shephard</li>
+ <li>Kate Austin</li>
+ <li>James “Sawyer” Ford</li>
+ <li>John Locke</li>
+ <li>Hugo “Hurley” Reyes</li>
+ <li>Benjamin Linus</li>
+ <li>Charlie Pace</li>
+ <li>Juliet Burke</li>
+</ul>
+</body>
+</html>

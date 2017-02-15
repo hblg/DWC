@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>EJERCICIOS jQuery2</title>
+	<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+			/**console.log(
+			     $('#zona_vip').each(function( index ) {
+                       console.log( (index +1) + ": " + $( this ).text() );
+                     })
+			     
+ 			     );**/
+
+			/**console.log(
+			    $('#zona_popular').each(function( index ) {
+                     console.log( (index +1) + ": " + $( this ).text() );
+                     })
+			     
+			     );**/
+
+			/**console.log(
+			     $('li:nth-child(3)').not('#row_4').css('color','red')
+			     
+			 );**/
+			 
+			 console.log(
+			     $('#zona_vip > i > li').html(
+           $('#zona_vip > i > li').html().replace("FILA Libre", "FILA COMPLETA")).css('color','red')
+			 );
+             
+			 /**console.log(
+			     $('li:even').not('#row_1').not('#row_2').not('#row_3').not('#row_4').css('color','blue')
+			     
+			 );**/
+
+			    
+			 
+	});
+	</script>
+</head>
+
+<body>
+<div id="asientos"><b>CINE ZUBIRI</b>
+<ul id="zona_vip"><i>
+   <li id="row_1">FILA Libre
+    <ul>
+     <li>asiento 1-1</li>
+     <li>asiento 1-2</li>
+     <li>asiento 1-3</li>
+     <li>asiento 1-4</li>
+     <li>asiento 1-5</li>
+    </ul>
+   </li>
+</i></ul>
+<ul id="zona_popular">
+  <li id="row_2">FILA Libre
+   <ul>
+    <li>asiento 2-1</li>
+    <li>asiento 2-2</li>
+    <li>asiento 2-3</li>
+    <li>asiento 2-4</li>
+    <li>asiento 2-5</li>
+   </ul>
+  </li>
+    <li id="row_3">FILA Libre
+   <ul>
+    <li>asiento 3-1</li>
+    <li>asiento 3-2</li>
+    <li>asiento 3-3</li>
+    <li>asiento 3-4</li>
+    <li>asiento 3-5</li>
+   </ul>
+  </li>
+    <li id="row_4">FILA Libre
+   <ul>
+    <li>asiento 4-1</li>
+    <li>asiento 4-2</li>
+    <li>asiento 4-3</li>
+    <li>asiento 4-4</li>
+    <li>asiento 4-5</li>
+   </ul>
+  </li>
+</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<style type="text/css">
+  
+</style> 
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#btnEnviar").click(function(e){
+      e.preventDefault();
+      var nomb = $('#name').val();
+      var email =$('#email').val()
+      var messag = $('#messages').val();
+      var datos = {n: nomb,e: email,m: messag};
+    $.ajax({
+      url : "envio.php",
+      type: "POST",
+      data :  datos,
+      success: function(respuesta){
+       alert(respuesta);
+      }});
+     console.log(nomb+ email + messag);
+    });   
+});        
+          
+</script>   
+</head>
+<body>
+    <form method="post" id="formulario" action="envio.php">
+		</br>
+		<div id="ok"></div>
+             <p><span>Nombre</span>
+                <input type="text" name="name" id="name" /></p>
+			<p><span>Email</span>
+                <input type="text" name="email" id="email" /></p>
+			<p><span>Comenta</span></br>
+			    <textarea id="messages" cols="40" rows="3" name="descripcion" maxlength="380"> </textarea></p>
+		<input type="submit"  id="btnEnviar" value="Aceptar" name="aceptar" />
+    
+<div id="result"></div>
+	</form>
+</body>
+</html>

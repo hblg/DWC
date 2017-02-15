@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>Ejercicio 2 Ajax</title>
+<style type="text/css">
+	
+	table{
+		border:solid;
+	}
+	
+	tr{
+		border:solid;
+	}
+</style>
+<script language="JavaScript" type="text/javascript">
+//Material Original de Egoitz Copyright
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+  	//A la primera no entra al if pero una vez que hace el send, como el state ha cambiado entonces entra.
+    if (this.readyState == 4 && this.status == 200) {
+    devuelveDatos(this);
+    }
+  };
+  xhttp.open("GET", "peliculas.xml", true);
+  xhttp.send();
+}
+function devuelveDatos(nomArchivo){
+	var datoXML=nomArchivo.responseXML;
+	var selectDirector = "<select id='select1' name='pelicul' onchange=cambio()>";
+	var repe = false;
+	var arrayDirectores=[];
+	peliculas = datoXML.getElementsByTagName("Pelicula");
+	
+	for(var i = 0; i<peliculas.length;i++){
+		repe=false;
+		for(var z=0;z<arrayDirectores.length;z++){
+			var director=peliculas[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue;
+			if(director===arrayDirectores[z]){
+				repe=true;
+			}
+		}
+		if(repe==false){
+			arrayDirectores.push(peliculas[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue);
+			selectDirector+="<option>"+
+			peliculas[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue+"</option>";
+		}
+		
+	}
+	document.getElementById("resPelicul").innerHTML=selectDirector;
+	selDirectorId = document.getElementById("select1");
+	//selDirectorId.addEventListener("change",cambio, false);
+	
+	function cambio(){
+		var valorSelect1 = selDirectorId.options[selDirectorId.selectedIndex].value;
+		var selectTitulos = "<select id='select2' name='title'>";
+	
+			for(var x=0;x<peliculas.length;x++){
+                if (peliculas[x].getElementsByTagName("Director")[0].childNodes[0].nodeValue == valorSelect1){
+                    selectTitulos += '<option>'+ peliculas[x].getElementsByTagName("Titulo")[0].childNodes[0].nodeValue+'</option>'; 
+                }
+			}
+			selectTitulos+='</select>';
+			document.getElementById("resPelicul").innerHTML += selectTitulos;
+	}
+}
+</script>
+</head>
+<body>
+	<!-- Al hacer click en el boton llamamos a la funcion loadDoc -->
+	<input type="button" name="boton" value="Inicio" onClick="loadDoc()"/>
+	<div id="resPelicul">
+
+	</div>	
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<title>Ejercicio 2 Ajax</title>
+<style type="text/css">
+	
+	table{
+		border:solid;
+	}
+	
+	tr{
+		border:solid;
+	}
+</style>
+<script language="JavaScript" type="text/javascript">
+//Material Original de Egoitz Copyright
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+  	//A la primera no entra al if pero una vez que hace el send, como el state ha cambiado entonces entra.
+    if (this.readyState == 4 && this.status == 200) {
+    devuelveDatos(this);
+    }
+  };
+  xhttp.open("GET", "peliculas.xml", true);
+  xhttp.send();
+}
+function devuelveDatos(nomArchivo){
+	var datoXML=nomArchivo.responseXML;
+	var selectDirector = "<select name='pelicul'>";
+	var peliculas = datoXML.getElementsByTagName("Pelicula");
+	
+	for(var i = 0; i<peliculas.length;i++){
+		selectDirector+="<option>"+
+		peliculas[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue+"</option>";
+	}
+	document.getElementById("resPelicul").innerHTML=selectDirector;
+	
+	var carteles = document.getElementsByClassName('cartel');
+	for(var j=0;j<carteles.length;i++){
+		carteles[j].addEventListener('click', muestraSinopsis);
+	}
+}
+</script>
+</head>
+<body>
+	<!-- Al hacer click en el boton llamamos a la funcion loadDoc -->
+	<input type="button" name="boton" value="Inicio" onClick="loadDoc()"/>
+	<div id="resPelicul">
+		<select>
+			
+		</select>
+	</div>	
+</body>
+</html>

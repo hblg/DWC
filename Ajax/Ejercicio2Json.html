@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<style>
+</style>
+<head>
+<meta charset="utf-8"/>
+<title>Ejercicio 2 Json</title>
+<script language="JavaScript" type="text/javascript">
+/* 2-	Tendremos un fichero con datos en formato JSON, en el que habra una
+serie de nombres. El ejercicio consiste en introducir un nombre cualquiera 
+en un cuadro de texto y segun estemos escribiendo mostrara sugerencias que 
+coincidan con los nombres del servidor. Si no hay coincidencias mostrara 
+un mensaje personalizado.*/
+
+ function mostrar(url) {
+    var peticion = new XMLHttpRequest();
+    peticion.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         var jsonDoc = JSON.parse(this.responseText);
+        myFunction(jsonDoc);
+      }
+    };
+    peticion.open("GET", url, true);
+    peticion.send();
+ } 
+  function myFunction(jsonDoc) {
+    //var jsonDoc = JSON.parse(xml.responseText);
+    var p = document.getElementById("texto").value;
+    console.log(p);
+    var xhttp = document.getElementById("SugTxt");
+    xhttp.innerHTML = "";
+    var cuent = 1;
+    if (p !== ""){
+      p = p.toLowerCase();
+      var len = p.length;
+      for (key in jsonDoc){
+        var jcon = jsonDoc[key].substr(0, len);
+        jcon = jcon.toLowerCase();
+        console.log(jcon);
+        if (p == jcon){
+          if (cuent == 1){
+            console.log(jsonDoc[key]);
+            xhttp.innerHTML += jsonDoc[key];
+            cuent++;
+          }else{
+            xhttp.innerHTML += ", " + jsonDoc[key];
+          }
+        }
+      }
+      if (xhttp.innerHTML == ""){
+        xhttp.innerHTML = "No se han encontrado sugerencias"
+      }
+      }else{
+        xhttp.innerHTML = "";
+      }
+  }
+</script>
+
+</head>
+<body>
+  <form action=""> 
+  Nombre: <input type="text" id="texto" onkeyup="mostrar('nombres.json')">
+  </form>
+  
+  <p>Sugerencias: <span id="SugTxt"></span></p> 
+</body>
+</html>

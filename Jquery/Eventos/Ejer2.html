@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>   
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<style type="text/css">
+     
+</style>
+<script type="text/javascript">
+              $(document).ready(function(){
+                  $("input").focus(function(){
+                     $(this).css({
+                         'border-color': '#ff9999',
+                         'background-color':'#00ffff' 
+                         });
+                  });
+                  $("input").focusout(function(){
+                     $(this).css({
+                         'border-color': 'inherit',
+                         'background-color':'#ffffff',
+
+                    });
+                  });
+              });      
+            
+</script>  
+</head>
+<body>
+    <h4>Formulario</h4>
+    <form name="formulario" action="#" method="post" id="formu">
+            <p>
+            <input type="text" name="cuadro" id="cuadro">
+            <input type="text" name="cuadro1" id="cuadro1">
+            <input type="text" name="cuadro2" id="cuadro2">
+            </p>
+            <p>
+            <input type="text" name="cuadro3" id="cuadro3">
+            <input type="text" name="cuadro4" id="cuadro4">
+            <input type="text" name="cuadro5" id="cuadro5">
+            </p>
+   </form>
+      
+    </body>
+</html>

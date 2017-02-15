@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<style type="text/css">
+    body{
+      text-align: center;
+      font: small-caps 100%/100% serif;
+    }
+    h2{
+        color: #336699;
+    }
+</style>
+<script type="text/javascript">         
+  $(document).ready(function(){                 
+      $("button").click(function(){
+        $("#cafe").prop("checked", true);
+        });
+     $("input").click(function(){
+      $("p").css('font-style','normal');   
+        if(this.checked){
+        $(this).next().css('font-style','italic');                        
+        }
+  });             
+                 
+  });           
+</script>
+</head>
+<body> 
+  <h1>MENU DEL DIA</h1>
+  
+    <h2>Primeros</h2>
+  <form action="">
+    <input type="radio" value="Ensalada" name="primero" ><p>Ensalada de legumbres</p>
+    <input type="radio" value="Espinacas" name="primero" ><p>Espinacas con gomasio</p>
+             
+  </form>
+  
+  <form action="">    
+    <h2>Segundos</h2>
+        <input type="radio" value="Brochetas" name="segundo" ><p>Brochetas de ternera con salsa de soja</p>
+        <input type="radio" value="Berberechos" name="segundo" ><p>Berberechos al vapor perfectos</p>
+            
+  </form>     
+    
+    <form action="">   
+      <h2>Postres</h2>
+        <input type="radio" value="tarta" name="postres" ><p>tarta de queso y turron</p>
+        <input type="radio" value="macedonia" name="postres" ><p>Macedonia de Frutas</p>
+             
+    </form>
+    <form>
+      <input type="checkbox" name="cafe" value="cafe" id="cafe"><h2>Café</h2>
+      <button>PEDIR</button>
+    </form>
+        
+</body>
+</html>
